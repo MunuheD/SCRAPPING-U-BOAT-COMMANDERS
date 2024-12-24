@@ -77,3 +77,6 @@ You can install the required libraries using `pip`:
 
 ```bash
 pip install requests beautifulsoup4 pandas openpyxl
+
+### **Disclaimer**
+Please note that this script relies on the structure of the uboat.net website to extract data. If the website's layout or structure changes, the script may fail to work as expected. In such cases, the HTML parsing logic and URL generation may need to be updated to align with the new structure of the site.
