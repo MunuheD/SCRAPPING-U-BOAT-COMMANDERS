@@ -2,11 +2,7 @@
 
 ## Overview
 
-The objective of this project is to use a PYTHON SCRAPING BOT to collect and organize detailed information on all U-boat commanders 
-listed on the webpage https://uboat.net/men/commanders/a.htm. This includes approximately 1,400 commanders, whose names span from A to Z.
-It collects key data such as the commander's name, date of birth, date of death, ranks, and decorations.
-The script processes the raw data, cleans it, formats it for better presentation, and saves the results in a structured Excel file 
-for easy analysis and further use.
+The objective of this project is to use a **PYTHON SCRAPING BOT** to collect and organize detailed information on all U-boat commanders listed on the webpage [https://uboat.net/men/commanders/a.htm](https://uboat.net/men/commanders/a.htm). This includes approximately 1,400 commanders, whose names span from A to Z. It collects key data such as the commander's name, date of birth, date of death, ranks, and decorations. The script processes the raw data, cleans it, formats it for better presentation, and saves the results in a structured Excel file for easy analysis and further use.
 
 The script utilizes various Python libraries, including `requests` for making HTTP requests, `BeautifulSoup` for parsing HTML content, `re` for using regular expressions to extract specific patterns, and `pandas` for data manipulation and organization.
 
@@ -18,7 +14,7 @@ In this step, the script constructs a list of URLs that link to the individual p
 
 The script then uses the `requests` library to fetch the HTML content of each URL. The response text from each URL is parsed using `BeautifulSoup` into BeautifulSoup objects, which are stored in a list (`bs_list`) for further extraction.
 
-Key features of this step:
+**Key features of this step:**
 - **Generating URLs**: URLs for the commanders' pages are generated based on an index range.
 - **HTTP requests**: The script makes GET requests to fetch the page content.
 - **Error handling and retries**: In case of failed requests (due to timeouts, connection issues, or server errors), the script automatically retries the request up to 10 times with increasing wait times between each attempt.
@@ -35,7 +31,7 @@ Once the BeautifulSoup objects are created, the next step is to extract the desi
 - **Ranks**: Extracted from a specific table cell with class `width400`.
 - **Decorations**: Extracted from the same `width400` table cell after filtering out the ranks.
 
-The data for each category is appended to respective lists (`Name`, `Born`, `Died`, `Ranks`, `Decorations`). Regular expressions are used to identify specific patterns in the HTML content and extract the correct values.
+The data for each category is appended to respective lists (`Name`, `Born`, `Died`, `Ranks`, and `Decorations`). Regular expressions are used to identify specific patterns in the HTML content and extract the correct values.
 
 #### Main functions:
 - `getcontent()`: This function loops through each BeautifulSoup object in the `bs_list` and extracts the required data (name, birth, death, ranks, and decorations) using various parsing techniques, including regular expressions.
@@ -64,6 +60,10 @@ The final output is a cleaned and well-structured DataFrame that contains the fo
 
 The script also generates an Excel file (`Scraped U-Boat Commanders.xlsx`) containing the cleaned and formatted data. This file can be opened for analysis or used in further research.
 
+### Disclaimer
+
+**Please note that this script relies on the structure of the uboat.net website to extract data.** If the website's layout or structure changes, the script may fail to work as expected. In such cases, the HTML parsing logic and URL generation may need to be updated to align with the new structure of the site.
+
 ### Required Libraries
 
 This script relies on the following Python libraries:
@@ -77,7 +77,3 @@ You can install the required libraries using `pip`:
 
 ```bash
 pip install requests beautifulsoup4 pandas openpyxl
-
-### Disclaimer
-
-Please note that this script relies on the structure of the uboat.net website to extract data. If the website's layout or structure changes, the script may fail to work as expected. In such cases, the HTML parsing logic and URL generation may need to be updated to align with the new structure of the site.
